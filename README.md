@@ -57,8 +57,6 @@ The paper evaluates FUSE-Net on three dermoscopic datasets. The splits are repor
 
 ## Quantitative Results
 
-## Quantitative Results
-
 **Table 1.** Comparison with unsupervised segmentation methods. FUSE-Net results are reported as mean ± standard deviation over three independent runs. Baseline values are reproduced as reported in the original papers.
 
 | Method | ISIC 17 Dice | ISIC 17 IoU | ISIC 18 Dice | ISIC 18 IoU | PH2 Dice | PH2 IoU |
