@@ -112,6 +112,7 @@ The paper’s qualitative figure presents a best-case and a worst-case example:
 -   Worst case: Low lesion-skin contrast and illumination artifacts weaken cue reliability and introduce misleading edge responses. Cue disagreement produces an inaccurate initial pseudo-mask that the refinement network cannot fully correct.
 
 <img width="760" height="275" alt="image" src="https://github.com/user-attachments/assets/f376de7a-c9a5-4875-9214-1393a8d3b0e3" />
+
 **Figure 2:** Results on best-case and worst-case test case.
 
 
