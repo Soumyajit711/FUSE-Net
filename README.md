@@ -63,75 +63,50 @@ The paper evaluates FUSE-Net on three dermoscopic datasets. The splits are repor
 
 ## Quantitative Results
 
-**Table 1.** Comparison with Unsupervised Segmentation Methods. FUSE-Net’s reported results are mean ± standard deviation over three runs. Baseline values are reproduced as reported in the paper.
+## Quantitative Results
 
-  ------------------------------------------------------------------------------------------------------------------------------------------
-  Method                              ISIC 17 Dice       ISIC 17 IoU      ISIC 18 Dice       ISIC 18 IoU          PH2 Dice           PH2 IoU
-  ------------------------------ ----------------- ----------------- ----------------- ----------------- ----------------- -----------------
-  A2S-v2                                    0.7501            0.6596            0.6135            0.5110            0.7821            0.6854
+**Table 1.** Comparison with unsupervised segmentation methods. FUSE-Net results are reported as mean ± standard deviation over three independent runs. Baseline values are reproduced as reported in the original papers.
 
-  SpecWRSC                                  0.6897            0.5841            0.6101            0.5052            0.7812            0.6854
-
-  NCut                                      0.6213            0.5184            0.6911            0.5878            0.8017            0.7051
-
-  K-means                                   0.6778            0.5811            0.7146            0.6157            0.8614            0.7778
-
-  SGSCN                                     0.5995            0.5004            0.7097            0.6181            0.8789            0.8015
-
-  SLED                                      0.7390            0.6445            0.7768            0.6935            0.9034            0.8350
-
-  RPI-Net                                   0.7584            0.6621            0.8288            0.7414            0.8931            0.8198
-
-  FUSE-Net (training-free, Y0)     0.7206 ± 0.0102   0.6354 ± 0.0184   0.8168 ± 0.0008   0.7224 ± 0.0006   0.8442 ± 0.0242   0.7649 ± 0.0124
-
-  FUSE-Net                         0.7617 ± 0.0104   0.6798 ± 0.0121   0.8370 ± 0.0098   0.7602 ± 0.0100   0.8897 ± 0.0274   0.8242 ± 0.0246
-  ------------------------------------------------------------------------------------------------------------------------------------------
+| Method | ISIC 17 Dice | ISIC 17 IoU | ISIC 18 Dice | ISIC 18 IoU | PH2 Dice | PH2 IoU |
+|:---|---:|---:|---:|---:|---:|---:|
+| A2S-v2 | 0.7501 | 0.6596 | 0.6135 | 0.5110 | 0.7821 | 0.6854 |
+| SpecWRSC | 0.6897 | 0.5841 | 0.6101 | 0.5052 | 0.7812 | 0.6854 |
+| NCut | 0.6213 | 0.5184 | 0.6911 | 0.5878 | 0.8017 | 0.7051 |
+| K-means | 0.6778 | 0.5811 | 0.7146 | 0.6157 | 0.8614 | 0.7778 |
+| SGSCN | 0.5995 | 0.5004 | 0.7097 | 0.6181 | 0.8789 | 0.8015 |
+| SLED | 0.7390 | 0.6445 | 0.7768 | 0.6935 | **0.9034** | **0.8350** |
+| RPI-Net | 0.7584 | 0.6621 | 0.8288 | 0.7414 | 0.8931 | 0.8198 |
+| FUSE-Net (Training-free, Y₀) | 0.7206 ± 0.0102 | 0.6354 ± 0.0184 | 0.8168 ± 0.0008 | 0.7224 ± 0.0006 | 0.8442 ± 0.0242 | 0.7649 ± 0.0124 |
+| **FUSE-Net (Ours)** | **0.7617 ± 0.0104** | **0.6798 ± 0.0121** | **0.8370 ± 0.0098** | **0.7602 ± 0.0100** | 0.8897 ± 0.0274 | 0.8242 ± 0.0246 |
 
 The trained network improves over its own training-free pseudo-mask baseline on all three datasets. The paper also reports that the relative importance of the three cues varies by dataset; no single cue is sufficient across all datasets.
 
-**Table 2.** Stage-1 Pseudo-mask Cue Ablation. Values are Dice / IoU, reported as mean ± standard deviation over three seeds.
+**Table 2.** Ablation study of individual cues in the Stage-1 pseudo-mask generation module. Results are reported as Dice / IoU (mean ± standard deviation over three independent seeds).
 
-  -------------------------------------------------------------------------------------------------------------------------------------------
-  Variant                                       ISIC 17 (Dice / IoU)                ISIC 18 (Dice / IoU)                     PH2 (Dice / IoU)
-  ------------------------------ ----------------------------------- ----------------------------------- ------------------------------------
-  w/o appearance cue               0.6393 ± 0.0144 / 0.5249 ± 0.0209   0.7615 ± 0.0107 / 0.6665 ± 0.0192   0.6092 ± 0.0347 / 0.4484 ± 0.04077
-
-  w/o semantic cue                 0.6519 ± 0.0271 / 0.5506 ± 0.0239   0.7672 ± 0.0197 / 0.6711 ± 0.0202    0.6040 ± 0.0320 / 0.4784 ± 0.0398
-
-  w/o geometric cue                0.6269 ± 0.0234 / 0.5186 ± 0.0258   0.7487 ± 0.0223 / 0.6584 ± 0.0259    0.7671 ± 0.0012 / 0.6607 ± 0.0010
-
-  w appearance cue                 0.6307 ± 0.0267 / 0.5209 ± 0.0209   0.7654 ± 0.0268 / 0.6708 ± 0.0297    0.7282 ± 0.0192 / 0.6187 ± 0.0182
-
-  w semantic cue                   0.5416 ± 0.0440 / 0.4370 ± 0.0398   0.6313 ± 0.0387 / 0.5244 ± 0.0400    0.5752 ± 0.0245 / 0.4478 ± 0.0253
-
-  w geometric cue                  0.6064 ± 0.0278 / 0.4897 ± 0.0302   0.7300 ± 0.0198 / 0.6296 ± 0.0304    0.5705 ± 0.0371 / 0.4804 ± 0.0364
-
-  FUSE-Net (training-free, Y0)     0.7206 ± 0.0102 / 0.6354 ± 0.0184   0.8168 ± 0.0008 / 0.7224 ± 0.0006    0.8442 ± 0.0242 / 0.7649 ± 0.0124
-  -------------------------------------------------------------------------------------------------------------------------------------------
+| Variant | ISIC 17 (Dice / IoU) | ISIC 18 (Dice / IoU) | PH2 (Dice / IoU) |
+|:---|:---:|:---:|:---:|
+| w/o appearance cue | 0.6393 ± 0.0144 / 0.5249 ± 0.0209 | 0.7615 ± 0.0107 / 0.6665 ± 0.0192 | 0.6092 ± 0.0347 / 0.4484 ± 0.04077 |
+| w/o semantic cue | 0.6519 ± 0.0271 / 0.5506 ± 0.0239 | 0.7672 ± 0.0197 / 0.6711 ± 0.0202 | 0.6040 ± 0.0320 / 0.4784 ± 0.0398 |
+| w/o geometric cue | 0.6269 ± 0.0234 / 0.5186 ± 0.0258 | 0.7487 ± 0.0223 / 0.6584 ± 0.0259 | 0.7671 ± 0.0012 / 0.6607 ± 0.0010 |
+| w appearance cue | 0.6307 ± 0.0267 / 0.5209 ± 0.0209 | 0.7654 ± 0.0268 / 0.6708 ± 0.0297 | 0.7282 ± 0.0192 / 0.6187 ± 0.0182 |
+| w semantic cue | 0.5416 ± 0.0440 / 0.4370 ± 0.0398 | 0.6313 ± 0.0387 / 0.5244 ± 0.0400 | 0.5752 ± 0.0245 / 0.4478 ± 0.0253 |
+| w geometric cue | 0.6064 ± 0.0278 / 0.4897 ± 0.0302 | 0.7300 ± 0.0198 / 0.6296 ± 0.0304 | 0.5705 ± 0.0371 / 0.4804 ± 0.0364 |
+| **FUSE-Net (Training-free, Y₀)** | **0.7206 ± 0.0102 / 0.6354 ± 0.0184** | **0.8168 ± 0.0008 / 0.7224 ± 0.0006** | **0.8442 ± 0.0242 / 0.7649 ± 0.0124** |
 
 The paper’s ablation discussion reports that removing the geometric cue has the largest effect on ISIC 2017 and ISIC 2018. On PH2, appearance and semantic cues are more influential, while the geometric cue is nearly redundant. The single-cue configurations underperform the fused pseudo-mask on all three datasets.
 
-**Table 3.** Cross-Dataset Evaluation. Each model is trained on the source dataset only and evaluated on the target set without retraining. n is the number of target images.
+**Table 3.** Cross-dataset evaluation of FUSE-Net. Each model is trained exclusively on the source dataset and evaluated on the target dataset without retraining. `n` denotes the number of target images.
 
-  --------------------------------------------------------------------------------------------------------------
-  Source model   Target evaluation set                             n       Dice        IoU       HD95       ASSD
-  -------------- ---------------------------------------- ---------- ---------- ---------- ---------- ----------
-  ISIC 17        ISIC 18 (official test)                       1,000     0.8199     0.7440      27.15      11.60
-
-  ISIC 17        ISIC 18 (full dataset, de-duplicated)         1,894     0.8163     0.7381      28.95      12.82
-
-  ISIC 17        PH2 (full dataset)                              200     0.8872     0.8182      21.27       8.27
-
-  ISIC 18        ISIC 17 (official test, de-duplicated)           71     0.6782     0.5883      47.10      23.99
-
-  ISIC 18        ISIC 17 (full dataset, de-duplicated)           300     0.7169     0.6353      34.42      16.82
-
-  ISIC 18        PH2 (full dataset)                              200     0.8874     0.8187      21.80       8.34
-
-  PH2            ISIC 17 (official test)                         600     0.7072     0.6110      38.70      17.63
-
-  PH2            ISIC 18 (official test)                       1,000     0.7715     0.6821      38.35      18.66
-  --------------------------------------------------------------------------------------------------------------
+| Source Model | Target Evaluation Set | n | Dice | IoU | HD95 | ASSD |
+|:---|:---|---:|---:|---:|---:|---:|
+| ISIC 17 | ISIC 18 (official test) | 1,000 | 0.8199 | 0.7440 | 27.15 | 11.60 |
+| ISIC 17 | ISIC 18 (full dataset, de-duplicated) | 1,894 | 0.8163 | 0.7381 | 28.95 | 12.82 |
+| ISIC 17 | PH2 (full dataset) | 200 | **0.8872** | **0.8182** | **21.27** | **8.27** |
+| ISIC 18 | ISIC 17 (official test, de-duplicated) | 71 | 0.6782 | 0.5883 | 47.10 | 23.99 |
+| ISIC 18 | ISIC 17 (full dataset, de-duplicated) | 300 | 0.7169 | 0.6353 | 34.42 | 16.82 |
+| ISIC 18 | PH2 (full dataset) | 200 | **0.8874** | **0.8187** | **21.80** | **8.34** |
+| PH2 | ISIC 17 (official test) | 600 | 0.7072 | 0.6110 | 38.70 | 17.63 |
+| PH2 | ISIC 18 (official test) | 1,000 | 0.7715 | 0.6821 | 38.35 | 18.66 |
 
 These results show asymmetric transfer across datasets. In particular, models trained on either ISIC 2017 or ISIC 2018 transfer strongly to PH2, while transfer in the reverse direction is more challenging.
 
