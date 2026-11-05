@@ -143,9 +143,3 @@ The paper identifies future directions, including additional self-supervised cue
     Reliable Mask Generation."
 
 ------------------------------------------------------------------------
-
-
-
-<img width="2000" height="409" alt="image" src="https://github.com/user-attachments/assets/43c1923b-ea29-4f8a-98f7-519b2aa58c5a" />
-Figure 1: FUSE-Net overview. Stage 1 (training-free): appearance, semantic, and geometric cues are extracted from the input image and combined by confidence-weighted fusion into a fused map, from which a cue-agreement map and a confidence-guided initial pseudo-mask Y0 are derived. Stage 2 (trained): a feature encoder and a residual coarse-to-fine decoder learn to predict a refined mask ˆY.
-
