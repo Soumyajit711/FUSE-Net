@@ -36,6 +36,9 @@ FUSE-Net has two stages:
 
 Important: Y0 is a training target, not an input channel to the segmentation network. Ground-truth masks are not used for training.
 
+<img width="1205" height="275" alt="image" src="https://github.com/user-attachments/assets/c600bc0f-9361-4ad1-a3cb-52255bca0eb5" />
+**Figure 1:** FUSE-Net overview: Stage 1 (training-free) fuses appearance, semantic, and geometric cues to generate a confidence-guided initial pseudo-mask Y0. Stage 2 (trained) uses a feature encoder and residual coarse-to-fine decoder to predict the refined mask ˆY.
+
 ### Stage 1: Cue-Agreement Pseudo-mask Generation
 
 Given an unlabeled dermoscopic image \(I\), a training-free generator produces an initial pseudo-mask \(Y_0\), a pixel-wise confidence map \(C_0\), and an edge map \(E\): \[(Y_0,C_0,E)=g(I).\]
@@ -67,19 +70,6 @@ The paper evaluates FUSE-Net on three dermoscopic datasets. The splits are repor
 -   Ground-truth masks are reserved for evaluation.
 -   The paper reports Dice, IoU, HD95, and ASSD; HD95 and ASSD are measured in pixels at the 256 × 256 resolution.
 -   Three separate models are trained, one for each dataset, without ground-truth masks.
-
-## Implementation Settings Reported in the Paper
-
-  Setting                  Value
-  ------------------------ -----------------------------
-  Batch size               16
-  Optimizer                AdamW
-  Learning-rate schedule   Cosine decay
-  Training duration        20 epochs
-  Compute                  Single Kaggle NVIDIA T4 GPU
-  Independent runs         3
-
-The paper states that hyperparameters are tuned on the validation split. It does not provide all numerical hyperparameter values in the paper; consult the implementation for exact values.
 
 ## Quantitative Results
 
@@ -161,6 +151,10 @@ The paper’s qualitative figure presents a best-case and a worst-case example:
 
 -   Best case: Appearance, semantic, and edge cues provide complementary, spatially consistent evidence. Their agreement produces a coherent initial pseudo-mask that is close to the refined prediction.
 -   Worst case: Low lesion-skin contrast and illumination artifacts weaken cue reliability and introduce misleading edge responses. Cue disagreement produces an inaccurate initial pseudo-mask that the refinement network cannot fully correct.
+
+<img width="760" height="275" alt="image" src="https://github.com/user-attachments/assets/f376de7a-c9a5-4875-9214-1393a8d3b0e3" />
+**Figure 2:** Results on best-case and worst-case test case.
+
 
 The paper identifies three recurring failure sources: low contrast and uneven illumination; cross-cue disagreement that fragments foreground evidence and causes under- or over-segmentation; and error propagation from unreliable initial boundaries.
 
