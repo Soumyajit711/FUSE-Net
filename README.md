@@ -47,11 +47,11 @@ The segmentation network combines a **DINOv2 encoder** with a residual coarse-to
 
 The paper evaluates FUSE-Net on three dermoscopic datasets. The splits are reported as follows:
 
-  Dataset       Train images   Validation images   Test images
-  ----------- -------------- ------------------- -------------
-  ISIC 2017            2,000                 150           600
-  ISIC 2018            2,594                 100         1,000
-  PH2                    800                 100           100
+| Dataset | Training Images | Validation Images | Testing Images |
+|:---|---:|---:|---:|
+| ISIC 2017 | 2,000 | 150 | 600 |
+| ISIC 2018 | 2,594 | 100 | 1,000 |
+| PH2 | 800 | 100 | 100 |                  800                 100           100
 
 ## Experimental protocol:
 
