@@ -1,10 +1,4 @@
 ## Rethinking Skin Lesion Segmentation Without Labels: From Visual Cues to Reliable Mask Generation
-
-FUSE-Net is a two-stage, fully unsupervised framework for dermoscopic skin-lesion segmentation. It generates confidence-aware pseudo-masks by fusing complementary appearance, semantic, and geometric edge cues, and then trains a segmentation network to refine those masks. No manual segmentation masks are used during training; ground-truth masks are reserved for evaluation.
-
-Paper: Rethinking Skin Lesion Segmentation Without Labels: From Visual Cues to Reliable Mask Generation
-Authors: Soumyajit Gayen, Rajdeep Pal, Jotiaditya Banerjee, Bala Chakravarthy Neelapu, Olga Brikova, Dmitrii Kaplun, and Ram Sarkar
-
 ------------------------------------------------------------------------
 
 ## Abstract
